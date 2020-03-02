@@ -635,7 +635,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="service-card">
                     <div class="card-banner cursor-pointer"
-                         style="background-image: url({% static 'heinze_site/img/direct.jpg'%{);"
+                         style="background-image: url({% static 'heinze_site/img/direct.jpg'%});"
                          data-toggle="modal"
                          data-target="#video1"
                          onclick="loadVideo(1)">
@@ -1044,7 +1044,7 @@
             <div class="modal-body">
                 <h5 class="modal-title fs-16 fw-600 text-black mb-4" id="exampleModalLongTitle">Modal title</h5>
 
-                <form action="{% url 'send_mail' %}" method="POST">
+                <form action="{% url 'send_mail' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="salutation" class="fs-14 fw-400 text-black">Anrede</label>
@@ -1057,32 +1057,32 @@
                     </div>
                     <div class="form-group">
                         <label for="firstname" class="fs-14 fw-400 text-black">Vorname</label>
-                        <input type="text" name="" id="firstname">
+                        <input type="text" name="firstname" id="firstname">
                     </div>
 
                     <div class="form-group">
                         <label for="secondname" class="fs-14 fw-400 text-black">Nachname</label>
-                        <input type="text" name="" id="secondname">
+                        <input type="text" name="secondname" id="secondname">
                     </div>
 
                     <div class="form-group">
                         <label for="firm" class="fs-14 fw-400 text-black">Firma </label>
-                        <input type="text" name="" id="firm">
+                        <input type="text" name="firm" id="firm">
                     </div>
 
                     <div class="form-group">
                         <label for="website" class="fs-14 fw-400 text-black">Website (Optional)</label>
-                        <input type="text" name="" id="website">
+                        <input type="text" name="website" id="website">
                     </div>
 
                     <div class="form-group">
                         <label for="email" class="fs-14 fw-400 text-black">E-Mail</label>
-                        <input type="text" name="" id="email">
+                        <input type="text" name="email" id="email">
                     </div>
 
                     <div class="form-group">
                         <label for="phonenumber" class="fs-14 fw-400 text-black">Telefon/Mobil</label>
-                        <input type="text" name="" id="phonenumber">
+                        <input type="text" name="phonenumber" id="phonenumber">
                     </div>
 
                 <p class="fs-14 fw-400 text-black mb-20">
@@ -1090,7 +1090,7 @@
                     meines Anliegens speichert und verarbeitet. Diese Einwilligung kann ich jederzeit widerrufen.
                     Näheres erläutert der <a class="text-green underline" href="">Datenschutzhinweis</a>.
                 </p>
-                <button type="submit" class="btn btn-success w-100" data-dismiss="modal">Save changes</button>
+                <button type="submit" class="btn btn-success w-100">Save changes</button>
                 </form>
             </div>
         </div>
