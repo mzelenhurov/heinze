@@ -124,3 +124,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MAIL_SENDER_EMAIL = 'direktmarketing@heinze.de'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
