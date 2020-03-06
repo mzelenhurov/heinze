@@ -1,3 +1,4 @@
 from django.contrib import admin
+from heinze_site.models import Temp
 
-# Register your models here.
+admin.site.register(Temp)

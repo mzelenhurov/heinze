@@ -131,166 +131,198 @@
             </div>
             <div class="col-lg-6">
                 <div class="" id="">
+
+                    {% for k in data %}
                     <div class="card">
-                        <div class="card-header collapsed" id="heading-1" data-toggle="collapse"
-                             data-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+                        <div class="card-header collapsed" id="heading-{{k.id}}" data-toggle="collapse"
+                             data-target="#collapse-{{k.id}}" aria-expanded="false" aria-controls="collapse-{{k.id}}">
                             <div class="checkbox-gr">
-                                <label for="group-1">
-                                    <input type="checkbox" name="first-group" id="group-1"
+                                <label for="group-{{k.id}}">
+                                    <input type="checkbox" name="first-group" id="group-{{k.id}}"
                                            onclick="cheackboxLabelControl(this)">
-                                    Heinze Expertenprofile Architekten/Planer
+                                    {{k.property}}
                                 </label>
                             </div>
                         </div>
 
-                        <div id="collapse-1" class="collapse multi-collapse" aria-labelledby="heading-1"
+                        <div id="collapse-{{k.id}}" class="collapse multi-collapse" aria-labelledby="heading-{{k.id}}"
                              data-parent="#accordionExample">
                             <div class="card-body">
+                                {% for v in k.values %}
                                 <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="1" id="1-1" onclick="cheackboxLabelControl(this)">
-                                    <label for="1-1">
-                                        Architektur- und Planungsbüro
+                                    <input type="checkbox" name="1" id="1-{{k.id}}" onclick="cheackboxLabelControl(this)">
+                                    <label for="1-{{k.id}}">
+                                        {{v}}
                                         <span>47.844</span>
                                     </label>
                                 </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="1" id="1-2" onclick="cheackboxLabelControl(this)">
-                                    <label for="1-2">
-                                        (Fach-) Ingenieurbüro
-                                        <span>12.865</span>
-                                    </label>
-
-                                </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="1" id="1-3" onclick="cheackboxLabelControl(this)">
-                                    <label for="1-3">
-                                        Garten- und Landschaftsplanungsbüro
-                                        <span>1.943</span>
-                                    </label>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
+
                     </div>
-                    <div class="card">
-                        <div class="card-header collapsed" id="heading-2" data-toggle="collapse"
-                             data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-                            <div class="checkbox-gr">
-                                <label for="group-2">
-                                    <input type="checkbox" name="first-group" id="group-2"
-                                           onclick="cheackboxLabelControl(this)">
-                                    Fachplanungsbereiche
-                                </label>
-                            </div>
-                        </div>
+                    {% endfor %}
 
-                        <div id="collapse-2" class="collapse multi-collapse" aria-labelledby="heading-2"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="2" id="2-1" onclick="cheackboxLabelControl(this)">
-                                    <label for="2-1">
-                                        Barrierefreies Bauen
-                                        <span>1.596</span>
-                                    </label>
-                                </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="2" id="2-2" onclick="cheackboxLabelControl(this)">
-                                    <label for="2-2">
-                                        Baubiologie/Bauökologie
-                                        <span>648</span>
-                                    </label>
+<!--                    <div class="card">-->
+<!--                        <div class="card-header collapsed" id="heading-1" data-toggle="collapse"-->
+<!--                             data-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">-->
+<!--                            <div class="checkbox-gr">-->
+<!--                                <label for="group-1">-->
+<!--                                    <input type="checkbox" name="first-group" id="group-1"-->
+<!--                                           onclick="cheackboxLabelControl(this)">-->
+<!--                                    Heinze Expertenprofile Architekten/Planer-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                                </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="2" id="2-3" onclick="cheackboxLabelControl(this)">
-                                    <label for="2-3">
-                                        Beleuchtungstechnik
-                                        <span>3.321</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header collapsed" id="heading-3" data-toggle="collapse"
-                             data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-                            <div class="checkbox-gr">
-                                <label for="group-3">
-                                    <input type="checkbox" name="first-group" id="group-3"
-                                           onclick="cheackboxLabelControl(this)">
-                                    Objektbereiche
-                                </label>
-                            </div>
-                        </div>
+<!--                        <div id="collapse-1" class="collapse multi-collapse" aria-labelledby="heading-1"-->
+<!--                             data-parent="#accordionExample">-->
+<!--                            <div class="card-body">-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="1" id="1-1" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="1-1">-->
+<!--                                        Architektur- und Planungsbüro-->
+<!--                                        <span>47.844</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="1" id="1-2" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="1-2">-->
+<!--                                        (Fach-) Ingenieurbüro-->
+<!--                                        <span>12.865</span>-->
+<!--                                    </label>-->
 
-                        <div id="collapse-3" class="collapse multi-collapse" aria-labelledby="heading-3"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="3" id="3-1" onclick="cheackboxLabelControl(this)">
-                                    <label for="3-1">
-                                        Bauten für öffentliche Sicherheit
-                                        <span>3.995</span>
-                                    </label>
-                                </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="3" id="3-2" onclick="cheackboxLabelControl(this)">
-                                    <label for="3-2">
-                                        Bildungsbauten u. Nebenanlagen
-                                        <span>5.976</span>
-                                    </label>
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="1" id="1-3" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="1-3">-->
+<!--                                        Garten- und Landschaftsplanungsbüro-->
+<!--                                        <span>1.943</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-header collapsed" id="heading-2" data-toggle="collapse"-->
+<!--                             data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">-->
+<!--                            <div class="checkbox-gr">-->
+<!--                                <label for="group-2">-->
+<!--                                    <input type="checkbox" name="first-group" id="group-2"-->
+<!--                                           onclick="cheackboxLabelControl(this)">-->
+<!--                                    Fachplanungsbereiche-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                                </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="3" id="3-3" onclick="cheackboxLabelControl(this)">
-                                    <label for="3-3">
-                                        Büro- und Verwaltungsbauten
-                                        <span>17.560</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header collapsed" id="heading-4" data-toggle="collapse"
-                             data-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-                            <div class="checkbox-gr">
-                                <label for="group-4">
-                                    <input type="checkbox" name="first-group" id="group-4"
-                                           onclick="cheackboxLabelControl(this)">
-                                    Anzahl Mitarbeiter
-                                </label>
-                            </div>
-                        </div>
+<!--                        <div id="collapse-2" class="collapse multi-collapse" aria-labelledby="heading-2"-->
+<!--                             data-parent="#accordionExample">-->
+<!--                            <div class="card-body">-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="2" id="2-1" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="2-1">-->
+<!--                                        Barrierefreies Bauen-->
+<!--                                        <span>1.596</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="2" id="2-2" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="2-2">-->
+<!--                                        Baubiologie/Bauökologie-->
+<!--                                        <span>648</span>-->
+<!--                                    </label>-->
 
-                        <div id="collapse-4" class="collapse multi-collapse" aria-labelledby="heading-4"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="4" id="4-1" onclick="cheackboxLabelControl(this)">
-                                    <label for="4-1">
-                                        1–2 Mitarbeiter
-                                        <span>3.995</span>
-                                    </label>
-                                </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="4" id="4-2" onclick="cheackboxLabelControl(this)">
-                                    <label for="4-2">
-                                        3–4 Mitarbeiter
-                                        <span>5.976</span>
-                                    </label>
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="2" id="2-3" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="2-3">-->
+<!--                                        Beleuchtungstechnik-->
+<!--                                        <span>3.321</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-header collapsed" id="heading-3" data-toggle="collapse"-->
+<!--                             data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">-->
+<!--                            <div class="checkbox-gr">-->
+<!--                                <label for="group-3">-->
+<!--                                    <input type="checkbox" name="first-group" id="group-3"-->
+<!--                                           onclick="cheackboxLabelControl(this)">-->
+<!--                                    Objektbereiche-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                                </div>
-                                <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="4" id="4-3" onclick="cheackboxLabelControl(this)">
-                                    <label for="4-3">
-                                        5–9 Mitarbeiter
-                                        <span>17.560</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!--                        <div id="collapse-3" class="collapse multi-collapse" aria-labelledby="heading-3"-->
+<!--                             data-parent="#accordionExample">-->
+<!--                            <div class="card-body">-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="3" id="3-1" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="3-1">-->
+<!--                                        Bauten für öffentliche Sicherheit-->
+<!--                                        <span>3.995</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="3" id="3-2" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="3-2">-->
+<!--                                        Bildungsbauten u. Nebenanlagen-->
+<!--                                        <span>5.976</span>-->
+<!--                                    </label>-->
+
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="3" id="3-3" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="3-3">-->
+<!--                                        Büro- und Verwaltungsbauten-->
+<!--                                        <span>17.560</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="card">-->
+<!--                        <div class="card-header collapsed" id="heading-4" data-toggle="collapse"-->
+<!--                             data-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">-->
+<!--                            <div class="checkbox-gr">-->
+<!--                                <label for="group-4">-->
+<!--                                    <input type="checkbox" name="first-group" id="group-4"-->
+<!--                                           onclick="cheackboxLabelControl(this)">-->
+<!--                                    Anzahl Mitarbeiter-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div id="collapse-4" class="collapse multi-collapse" aria-labelledby="heading-4"-->
+<!--                             data-parent="#accordionExample">-->
+<!--                            <div class="card-body">-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="4" id="4-1" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="4-1">-->
+<!--                                        1–2 Mitarbeiter-->
+<!--                                        <span>3.995</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="4" id="4-2" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="4-2">-->
+<!--                                        3–4 Mitarbeiter-->
+<!--                                        <span>5.976</span>-->
+<!--                                    </label>-->
+
+<!--                                </div>-->
+<!--                                <div class="checkbox-gr sub">-->
+<!--                                    <input type="checkbox" name="4" id="4-3" onclick="cheackboxLabelControl(this)">-->
+<!--                                    <label for="4-3">-->
+<!--                                        5–9 Mitarbeiter-->
+<!--                                        <span>17.560</span>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
             <div class="col-lg-6">
