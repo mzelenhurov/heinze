@@ -876,7 +876,8 @@ header {
   width: 100%;
   padding: 11px 20px;
   border-radius: 4px;
-  background-color: #f8f8f8; }
+  background-color: #f8f8f8;
+  border: 0; }
 
 .customers-cards {
   display: flex;
@@ -892,8 +893,16 @@ header {
     display: flex;
     align-items: center;
     justify-content: center; }
+    .customers-cards .customer-card .gray {
+      display: block; }
+    .customers-cards .customer-card .colored {
+      display: none; }
     .customers-cards .customer-card:hover {
       border-color: #0b9e6d; }
+      .customers-cards .customer-card:hover .gray {
+        display: none; }
+      .customers-cards .customer-card:hover .colored {
+        display: block; }
 
 .figures {
   padding-top: 70px;
