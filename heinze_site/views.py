@@ -15,7 +15,8 @@ def index(request):
         values = []
         temp_values = Temp.objects.filter(property=i.get('property')).values('value').distinct()
         for v in temp_values:
-            values.append(v.get('value'))
+            count = Temp.objects.filter(value=v.get('value')).count()
+            values.append({'value': v.get('value'), 'count': count})
         data.append({'id': prop.id, 'property': prop.property, 'values': values})
 
     return render(request, 'heinze_site/index.html', {'data': data})
@@ -50,7 +51,6 @@ def upload_data(request):
     with open('tsv/leadselectdata.tsv') as fd:
         rd = csv.reader(fd, delimiter="\t", quotechar='"')
         for row in rd:
-            print(row)
             if row[0] == 'orgID':
                 continue
             Temp.objects.create(orgID=row[0],
