@@ -9,13 +9,6 @@ from heinze_site.models import LeadSelectData
 
 from django.db import connection
 
-def my_custom_sql(self):
-    with connection.cursor() as cursor:
-        cursor.execute("UPDATE bar SET foo = 1 WHERE baz = %s", [self.baz])
-        cursor.execute("SELECT foo FROM bar WHERE baz = %s", [self.baz])
-        row = cursor.fetchone()
-
-    return row
 
 def index(request):
     propertiies = LeadSelectData.objects.values('property').distinct()
@@ -29,17 +22,21 @@ def index(request):
             count = LeadSelectData.objects.filter(value=v.get('value')).count()
             values.append({'id': value.id, 'value': v.get('value'), 'count': count})
         data.append({'id': prop.id, 'property': prop.property, 'values': values})
-    if LeadSelectData.objects.first():
-        with connection.cursor() as cursor:
-            cursor.execute("""SELECT COUNT(*)
-                    FROM (SELECT DISTINCT orgID FROM leadSelectData) f
-                    JOIN leadSelectData m2618 ON f.orgID = m2618.orgID AND m2618.propertyID = 2617 AND m2618.valueID = 2618
-                    JOIN leadSelectData m2596 ON f.orgID = m2596.orgID AND m2596.propertyID = 2595 AND m2596.valueID = 2596
-                    JOIN leadSelectData m1766 ON f.orgID = m1766.orgID AND m1766.propertyID = 1384 AND m1766.valueID = 1766""")
-            row = cursor.fetchone()
-            # print(row)
-            print(row[0])
+    # if LeadSelectData.objects.first():
+    #     with connection.cursor() as cursor:
+    #         cursor.execute("""SELECT COUNT(*)
+    #                 FROM (SELECT DISTINCT orgID FROM leadSelectData) f
+    #                 JOIN leadSelectData m2618 ON f.orgID = m2618.orgID AND m2618.propertyID = 2617 AND m2618.valueID = 2618
+    #                 JOIN leadSelectData m2596 ON f.orgID = m2596.orgID AND m2596.propertyID = 2595 AND m2596.valueID = 2596
+    #                 JOIN leadSelectData m1766 ON f.orgID = m1766.orgID AND m1766.propertyID = 1384 AND m1766.valueID = 1766""")
+    #         row = cursor.fetchone()
+    #         # print(row)
+    #         print(row[0])
     return render(request, 'heinze_site/index.html', {'data': data})
+
+
+def temp(request):
+    print(request)
 
 
 def send_mail(request):
