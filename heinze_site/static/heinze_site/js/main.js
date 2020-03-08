@@ -12,6 +12,21 @@ function cheackboxLabelControl($event) {
 }
 
 
+function cheackboxValueLabelControl($event) {
+    let value_id = $event.id;
+    console.log(value_id);
+    let label = document.querySelector(`label[for="${$event.id}"]`);
+
+    if ($event.checked === true) {
+        label.classList.add('text-green');
+    } else {
+        label.classList.remove('text-green');
+    }
+
+    console.log($event);
+    console.log(label);
+}
+
 function cheackboxServiceControl($event) {
     let label = document.querySelector(`label[for="${$event.id}"]`);
 

@@ -134,6 +134,7 @@
 
                     {% for k in data %}
                     <div class="card">
+
                         <div class="card-header collapsed" id="heading-{{k.id}}" data-toggle="collapse"
                              data-target="#collapse-{{k.id}}" aria-expanded="false" aria-controls="collapse-{{k.id}}">
                             <div class="checkbox-gr">
@@ -150,8 +151,8 @@
                             <div class="card-body">
                                 {% for v in k.values %}
                                 <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="1" id="1-{{k.id}}" onclick="cheackboxLabelControl(this)">
-                                    <label for="1-{{k.id}}">
+                                    <input type="checkbox" name="1" id="{{v.id}}" onclick="cheackboxValueLabelControl(this)">
+                                    <label for="{{v.id}}">
                                         {{v.value}}
                                         <span>{{v.count}}</span>
                                     </label>
@@ -663,7 +664,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="service-card">
                     <div class="card-banner cursor-pointer"
-                         style="background-image: url({% static 'heinze_site/img/direct.jpg'%});"
+                         style="background-image: url({% static 'heinze_site/img/direct.jpg' %});"
                          data-toggle="modal"
                          data-target="#video1"
                          onclick="loadVideo(1)">
@@ -671,14 +672,11 @@
                         <span class="icon-play-button cst-i"></span>
 
                     </div>
-                    <h5 class="fs-22 fw-500 text-black pb-3 br-b mb-0">
-                        Der Klassiker in der Architektenansprache
-                    </h5>
+                    <h5 class="fs-22 fw-500 text-black pb-3 br-b mb-0">Der Klassiker in der Architektenansprache</h5>
                     <p class="fs-14 fw-600 text-black mt-2">Leistungsbeschreibung: DIN lang</p>
                     <p class="fs-14 fw-600 text-black mt-3">Mailing</p>
 
                     <div class="desk">
-
                         <ul class="fs-14 fw-400 text-gray">
                             <li>Laserdruck 4/0 Anschreiben</li>
                             <li>Falzen von 1 Teil Konfektion von 2 Teilen Portooptimieren</li>

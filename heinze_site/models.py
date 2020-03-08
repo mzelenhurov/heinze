@@ -1,7 +1,10 @@
 from django.db import models
 
 
-class Temp(models.Model):
+class LeadSelectData(models.Model):
+    class Meta:
+        db_table = "leadSelectData"
+
     orgID = models.IntegerField(null=True, blank=True)
     country = models.CharField(null=True, blank=True, max_length=255)
     zip = models.CharField(null=True, blank=True, max_length=255)

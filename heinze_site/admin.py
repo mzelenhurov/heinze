@@ -1,4 +1,4 @@
 from django.contrib import admin
-from heinze_site.models import Temp
+from heinze_site.models import LeadSelectData
 
-admin.site.register(Temp)
+admin.site.register(LeadSelectData)
