@@ -57,8 +57,9 @@ function cheackboxServiceControl($event) {
 $(document).ready(function () {
 
 		 $('#onEnd').click(function(){
-
-			$.ajax('localhost:8000/endpoint/', {
+         let token = '{{csrf_token}}';
+			$.ajax('/endpoint', {
+			    headers: {"X-CSRFToken": token},
 				type: 'POST',
                	data: { myData: 5 },
 				success: function (data, status, xhr) {
@@ -90,7 +91,7 @@ $(document).ready(function () {
     //    function(data, status, jqXHR) {// success callback
     //           console.log('ty pidor taki')
     //     })
-}
+
 
 function adressSum1($event){
 let label = document.querySelector(`label[for="${$event.id}"]`);
