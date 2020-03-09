@@ -1,3 +1,5 @@
+let sumArray = [];
+
 function cheackboxLabelControl($event) {
     let label = document.querySelector(`label[for="${$event.id}"]`);
 
@@ -6,25 +8,33 @@ function cheackboxLabelControl($event) {
     } else {
         label.classList.remove('text-green');
     }
-
     console.log($event);
     console.log(label);
 }
 
-
-function cheackboxValueLabelControl($event) {
+function cheackboxValueLabelControl($event, count) {
     let value_id = $event.id;
     console.log(value_id);
+    let sum = 0;
     let label = document.querySelector(`label[for="${$event.id}"]`);
-
     if ($event.checked === true) {
         label.classList.add('text-green');
+        sumArray = [...sumArray, count];
+    sumArray.forEach(x => sum += x);
+    console.log(sum);
+    addresses = sum + ' ' + 'Adressen';
+    document.getElementById('address').innerHTML = addresses;
     } else {
         label.classList.remove('text-green');
+        let filtered_array = sumArray.filter(x=> x !==count
+        );
+        sumArray = filtered_array;
+        sumArray.forEach(x => sum += x);
+        addresses = sum + ' ' + 'Adressen';
+        document.getElementById('address').innerHTML = addresses;
     }
+    console.log(sumArray);
 
-    console.log($event);
-    console.log(label);
 }
 
 function cheackboxServiceControl($event) {
