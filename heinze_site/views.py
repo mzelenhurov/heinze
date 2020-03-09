@@ -35,8 +35,9 @@ def index(request):
     return render(request, 'heinze_site/index.html', {'data': data})
 
 
-def temp(request):
+def endpoint(request):
     print(request)
+    return 10
 
 
 def send_mail(request):
