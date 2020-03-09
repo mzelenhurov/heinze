@@ -57,11 +57,9 @@ function cheackboxServiceControl($event) {
 $(document).ready(function () {
 
 		 $('#onEnd').click(function(){
-         let token = '{{csrf_token}}';
-			$.ajax('/endpoint', {
-			    headers: {"X-CSRFToken": token},
+			$.ajax('endpoint', {
 				type: 'POST',
-               	data: { myData: 5 },
+               	data: { 'myData': 5 },
 				success: function (data, status, xhr) {
 					console.log(data)
 				},

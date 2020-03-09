@@ -39,8 +39,10 @@ def index(request):
 
 @csrf_exempt
 def endpoint(request):
-    print(request)
-    return 10
+    if request.method == 'POST':
+        data = request.POST
+        print(data)
+    return HttpResponse(status=200, content='1111111111111111111')
 
 
 def send_mail(request):
