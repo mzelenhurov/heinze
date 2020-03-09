@@ -3,6 +3,8 @@ import csv
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.mail import send_mail as send_mail_to, BadHeaderError
+from django.views.decorators.csrf import csrf_exempt
+
 from heinze.settings import MAIL_SENDER_EMAIL
 from heinze_site.models import LeadSelectData
 
@@ -35,6 +37,7 @@ def index(request):
     return render(request, 'heinze_site/index.html', {'data': data})
 
 
+@csrf_exempt
 def endpoint(request):
     print(request)
     return 10
