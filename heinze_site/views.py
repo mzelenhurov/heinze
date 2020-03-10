@@ -41,8 +41,14 @@ def index(request):
 def endpoint(request):
     if request.method == 'POST':
         data = request.POST
-        print(data)
-    return HttpResponse(status=200, content='1111111111111111111')
+        search_string = data.get('search_string')
+        arr = data.getlist('arr[]')
+        sum = 0
+        for id in arr:
+            value = LeadSelectData.objects.filter(pk=int(id)).first()
+            count = LeadSelectData.objects.filter(value=value.value, zip__icontains=str(search_string)).count()
+            sum += count
+        return HttpResponse(status=200, content=sum)
 
 
 def send_mail(request):
