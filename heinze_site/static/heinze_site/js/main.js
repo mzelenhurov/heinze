@@ -32,7 +32,8 @@ function cheackboxValueLabelControl($event, count, id) {
         let filtered_array = sumArray.filter(x=> x !==count
         );
         sumArray = filtered_array;
-        let filtered_id = idArray.filter(x=> x!==id );
+        let filtered_id = idArray.filter(x=> x !==id );
+        idArray =filtered_id;
         sumArray.forEach(x => sum += x);
         addresses = sum + ' ';
         document.getElementById('address').innerHTML = addresses;
