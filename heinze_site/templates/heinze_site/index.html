@@ -151,7 +151,7 @@
                             <div class="card-body">
                                 {% for v in k.values %}
                                 <div class="checkbox-gr sub">
-                                    <input type="checkbox" name="1" id="{{v.id}}" onclick="cheackboxValueLabelControl(this, {{ v.count }})">
+                                    <input type="checkbox" name="1" id="{{v.id}}" onclick="cheackboxValueLabelControl(this, {{ v.count }}, {{ v.id }})">
                                     <label for="{{v.id}}">
                                         {{v.value}}
                                         <span>{{v.count}}</span>
@@ -348,7 +348,7 @@
                                 <label for="around" class="text-black cursor-pointer fs-16 fw-600 ml-2 mb-0">UMKREISSELEKTION</label>
                             </div>
                             <p class="text-light-black fs-16 fw-400 mt-3 mb-1">Postleitzahl</p>
-                            <input class="scoreboard mt-2" type="text">
+                            <input class="scoreboard mt-2 postcode" type="text">
                         </div>
                         <div class="w-100">
                             <div class="d-flex align-items-center">

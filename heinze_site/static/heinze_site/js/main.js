@@ -1,5 +1,6 @@
 let sumArray = [];
 let sumCount = 0;
+let idArray = [];
 
 function cheackboxLabelControl($event) {
     let label = document.querySelector(`label[for="${$event.id}"]`);
@@ -13,7 +14,7 @@ function cheackboxLabelControl($event) {
     console.log(label);
 }
 
-function cheackboxValueLabelControl($event, count) {
+function cheackboxValueLabelControl($event, count, id) {
     let value_id = $event.id;
     console.log(value_id);
     let sum = 0;
@@ -21,6 +22,7 @@ function cheackboxValueLabelControl($event, count) {
     if ($event.checked === true) {
         label.classList.add('text-green');
         sumArray = [...sumArray, count];
+        idArray = [...idArray, id];
     sumArray.forEach(x => sum += x);
     console.log(sum);
     addresses = sum + ' ';
@@ -30,12 +32,13 @@ function cheackboxValueLabelControl($event, count) {
         let filtered_array = sumArray.filter(x=> x !==count
         );
         sumArray = filtered_array;
+        let filtered_id = idArray.filter(x=> x!==id );
         sumArray.forEach(x => sum += x);
         addresses = sum + ' ';
         document.getElementById('address').innerHTML = addresses;
     }
     console.log(sumArray);
-
+    return idArray;
 
 }
 
@@ -54,21 +57,35 @@ function cheackboxServiceControl($event) {
     console.log(label);
 }
 
-$(document).ready(function () {
 
-		 $('#onEnd').click(function(){
-			$.ajax('endpoint', {
-				type: 'POST',
-               	data: { 'myData': 5 },
-				success: function (data, status, xhr) {
-					console.log(data)
-				},
-				error: function (jqXhr, textStatus, errorMessage) {
-						console.log(errorMessage);
-					}
-			});
-		});
-    });
+$(function () {
+   let $input = $('.postcode');
+   $input.on('input',function (evt) {
+       $.ajax({
+      type: 'POST',
+      url: 'endpoint',
+      data: {'search_string': $input.val(),
+                'arr': idArray},
+           success: function (responce) {
+           }
+       })
+   });
+});
+// $(document).ready(function () {
+//
+// 		 $('#onEnd').click(function(){
+// 			$.ajax('endpoint', {
+// 				type: 'POST',
+//                	data: { 'myData': 5 },
+// 				success: function (data, status, xhr) {
+// 					console.log(data)
+// 				},
+// 				error: function (jqXhr, textStatus, errorMessage) {
+// 						console.log(errorMessage);
+// 					}
+// 			});
+// 		});
+//     });
 
 
 // function toEndpoint(){
