@@ -72,42 +72,11 @@ $(function () {
        })
    });
 });
-// $(document).ready(function () {
-//
-// 		 $('#onEnd').click(function(){
-// 			$.ajax('endpoint', {
-// 				type: 'POST',
-//                	data: { 'myData': 5 },
-// 				success: function (data, status, xhr) {
-// 					console.log(data)
-// 				},
-// 				error: function (jqXhr, textStatus, errorMessage) {
-// 						console.log(errorMessage);
-// 					}
-// 			});
-// 		});
-//     });
 
+$(function () {
+    let $input = $('.addAddresses');
 
-// function toEndpoint(){
-//     let token = '{{csrf_token}}';
-//     let postData = 5;
-//     let url = 'localhost:8000/endpoint';
-//     $.ajax('localhost:8000/endpoint',{
-//         type: 'POST',  // http method
-//     data: { myData: 5 },  // data to submit
-//     success: function (data, status, xhr) {
-//     },
-//     error: function (jqXhr, textStatus, errorMessage) {
-//             console.log(errorMessage)
-//         }
-//     })
-    // $.post('localhost:8000/endpoint',   // url
-    //    { myData: '5' }, // data to be submit
-    //    function(data, status, jqXHR) {// success callback
-    //           console.log('ty pidor taki')
-    //     })
-
+});
 
 function adressSum1($event){
 let label = document.querySelector(`label[for="${$event.id}"]`);
