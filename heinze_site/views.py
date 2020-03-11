@@ -1,7 +1,7 @@
 import csv
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail as send_mail_to, BadHeaderError
 from django.views.decorators.csrf import csrf_exempt
 
@@ -92,3 +92,4 @@ def upload_data(request):
                                 property=row[7],
                                 valueID=row[8],
                                 value=row[9])
+        return redirect('index')
