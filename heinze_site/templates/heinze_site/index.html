@@ -355,7 +355,7 @@
                                 <span style="font-family: 'Roboto', sans-serif; font-size: 12px; margin-left: 6px">&#9432;</span>
                             </div>
                             <p class="text-light-black fs-16 fw-400 mt-3 mb-1">Adressanzahl eingeben</p>
-                            <input class="scoreboard mt-2 addAddresses" type="text">
+                            <input class="scoreboard mt-2 addAddress"  type="text" >
                         </div>
                     </div>
                     <div class="form-group mt-5 w-100">
@@ -490,7 +490,6 @@
                             <li>Projekteinrichtung Erstellung des Telefonleitfadens</li>
                             <li>Einrichtung der Datenbank</li>
                             <li>Datenübernahme Projektschulung für Projektleiter und Telefonkontakter</li>
-                            <li>Einmalige Kosten 1.500,00 €</li>
                             <li>Adressnutzung inkl. Telefonnummer</li>
                             <li>Bedarfsermittlung mit bis zu 5 individuellen Fragen</li>
                             <li>Bis zu 8 Anwahlversuche Projektsteuerung Tagesaktuelle Übermittlung der Termine</li>
@@ -498,6 +497,7 @@
 
                         <p class="fs-14 fw-600 text-black mb-2">20,00 € pro Adresse</p>
                         <p class="fs-14 text-gray mb-4">zzgl. Mwst. und Porto</p>
+                        <p class="fs-14 text-gray mb-4">Einmalige Kosten 1.500,00 €</p>
 
                         <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                         <label class="btn btn-outline-success check-btn fw-700"
@@ -572,7 +572,7 @@
 
                         <label class="btn btn-outline-success check-btn fw-700"
                                for="service-cb-3">
-                            <input type="checkbox" id="service-cb-3" onclick="adressSum3(this)">
+                            <input type="checkbox" id="service-cb-3" class="adr3" onclick="adressSum3(this)">
                             Service wählen
                         </label>
 
@@ -598,7 +598,7 @@
                         <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                         <label class="btn btn-outline-success check-btn fw-700"
                                for="service-cb-3-1">
-                            <input type="checkbox" id="service-cb-3-1" onclick="adressSum3(this)">
+                            <input type="checkbox" id="service-cb-3-1" class="adr3" onclick="adressSum3(this)">
                             Service wählen
                         </label>
 
@@ -627,7 +627,7 @@
                             <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                             <label class="btn btn-outline-success check-btn fw-700"
                                    for="service-cb-3-2">
-                                <input type="checkbox" id="service-cb-3-2" onclick="adressSum4(this)">
+                                <input type="checkbox" id="service-cb-3-2" class="adr4" onclick="adressSum4(this)">
                                 Service wählen
                             </label>
 
@@ -653,7 +653,7 @@
                             <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                             <label class="btn btn-outline-success check-btn fw-700"
                                    for="service-cb-3-3">
-                                <input type="checkbox" id="service-cb-3-3" onclick="adressSum4(this)">
+                                <input type="checkbox" id="service-cb-3-3"  class="adr4" onclick="adressSum4(this)">
                                 Service wählen
                             </label>
                         </div>
@@ -783,33 +783,31 @@
                         <tbody>
                         <tr>
                             <td>Ausgewählte Heinze Adressen</td>
-                            <td>5.245</td>
+                            <td id="massInput">0</td>
                             <td>0,49 €</td>
-                            <td>2.570,05 €</td>
+                            <td id="calcSum">0 €</td>
                         </tr>
                         <tr>
                             <td>Eigene Adressen</td>
-                            <td>3.540</td>
+                            <td id="indInput">0</td>
                             <td>0,00 €</td>
                             <td>0,00 €</td>
                         </tr>
+                        <tr  id="plan1"></tr>
+                        <tr id="subplan1"></tr>
+                        <tr  id="plan2"></tr>
+                        <tr id="subplan2"></tr>
+                        <tr  id="plan3"></tr>
+                        <tr  id="plan4"></tr>
+                        <tr id="subplan4"></tr>
+                        <tr  id="plan5"></tr>
+                        <tr  id="plan6"></tr>
                         <tr>
-                            <td>Card2Click Paket</td>
-                            <td>8.785</td>
-                            <td>0,25 €</td>
-                            <td>2.196,25 €</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">Zwischensumme</td>
-                            <td>4.766,30 €</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">MwSt.</td>
-                            <td>905,60 €</td>
+                            <td colspan="4">zzgl. Mwst. und Porto</td>
                         </tr>
                         <tr class="total">
                             <td colspan="3">Total</td>
-                            <td class="text-green">5.671,90 €</td>
+                            <td class="text-green" id="totalSum">0 €</td>
                         </tr>
                         </tbody>
                     </table>
