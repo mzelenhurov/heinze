@@ -7,6 +7,8 @@ let sumCount5 = 0;
 let sumCount6 = 0;
 let countArray = [];
 let idArray = [];
+let procSlide = 0;
+
 
 function cheackboxLabelControl($event) {
     let label = document.querySelector(`label[for="${$event.id}"]`);
@@ -40,7 +42,7 @@ function cheackboxValueLabelControl($event, count, id) {
                 totalSum()
 
     } else {
-                totalSum()
+                totalSum();
 
         label.classList.remove('text-green');
         let filtered_array = sumArray.filter(x=> x !==count
@@ -87,19 +89,33 @@ $(function () {
                 'arr': idArray},
            success: function (responce) {
           document.getElementById('address').innerHTML = responce + ' ';
+            let slider = document.getElementById("range-inp");
+            let output = document.getElementById("range-val");
+            output.innerHTML = slider.value;
+            let calc1 = 0;
+            calc1 = responce*0.49;
+            sumArray = [responce];
+            document.getElementById('massInput').innerHTML =  responce;
+            document.getElementById('calcSum').innerHTML = calc1 + '€';
+            totalSum();
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+                procSlide = Math.round(this.value/100*responce);
+                let calc = 0;
+                calc = procSlide*0.49;
+                document.getElementById('address').innerHTML = procSlide + ' ';
+                sumArray = [procSlide];
+                document.getElementById('massInput').innerHTML =  procSlide;
+                document.getElementById('calcSum').innerHTML = calc + '€';
+                totalSum();
+            };
            }
        })
    });
 });
-// $(function () {
-//     let $input = $('.addAddresses');
-//     let sum = 0;
-//     sumArray.forEach(x => sum += x);
-//     $input.on('input', function (evt) {
-//        // sum = sum+parseInt($input.val());
-//        console.log(sum);
-//     });
-//
+
+
+
 // });
 let inputValue = 0;
 $('.addAddress').blur(function () {
@@ -230,25 +246,51 @@ let htmlData = " <td> Prozessunterstützung von der Einladung <br> bis zur Teiln
         sumCount3 = summ*0.31;
         sumCount3 = Number(sumCount3.toFixed(2));
         $('#plan3').append(htmlData);
-         $('#plan4').html('');
-         document.getElementById('service-cb-3-2').disabled = true;
-        document.getElementsByClassName('adr4').disabled = true;
+        document.getElementById('service-4').classList.remove('btn-success');
+        document.getElementById('service-4').classList.add('btn-outline-success');
+           $('#plan4').html('');
+           $('#subplan4').html('');
+        // document.getElementById('4Sum').innerHTML = 0 + '€';
+        let filtered_array2 = countArray.filter(x=> x !==sumCount4
+        );
+        countArray = filtered_array2;
         document.getElementById('3Input').innerHTML = calc;
         document.getElementById('3Sum').innerHTML = sumCount3 + '€';
                 countArray = [...countArray, sumCount3];
                           totalSum()
 
-    } else {
+    } else{
          let filtered_array = countArray.filter(x=> x !==sumCount3
         );
         countArray = filtered_array;
-        label.classList.remove('btn-success');
+        if (label.classList.contains('btn-outline-success')){
+            label.classList.add('btn-success');
+        label.classList.remove('btn-outline-success');
+        let summ = document.getElementById('address').innerHTML;
+        sumCount3 = summ*0.31;
+        sumCount3 = Number(sumCount3.toFixed(2));
+        $('#plan3').append(htmlData);
+        document.getElementById('service-4').classList.remove('btn-success');
+        document.getElementById('service-4').classList.add('btn-outline-success');
+           $('#plan4').html('');
+           $('#subplan4').html('');
+        // document.getElementById('4Sum').innerHTML = 0 + '€';
+        let filtered_array2 = countArray.filter(x=> x !==sumCount4
+        );
+        countArray = filtered_array2;
+        document.getElementById('3Input').innerHTML = calc;
+        document.getElementById('3Sum').innerHTML = sumCount3 + '€';
+                countArray = [...countArray, sumCount3];
+                          totalSum()
+        } else{
+            label.classList.remove('btn-success');
         label.classList.add('btn-outline-success');
                 $('#plan3').html('');
-                 $('#plan4').html('');
                            totalSum();
 
         sumCount3 = 0;
+        }
+
     }
     console.log(sumCount3);
     return sumCount3;
@@ -275,8 +317,9 @@ let htmlData2 ="<td colspan=\"3\">Einmalige Setup-Kosten</td>\n" +
         sumCount4 = Number(sumCount4.toFixed(2));
         $('#plan4').append(htmlData);
         $('#subplan4').append(htmlData2);
-         $('#plan3').html('');
-        document.getElementById('service-cb-3').disabled = true;
+        document.getElementById('service-3').classList.remove('btn-success');
+        document.getElementById('service-3').classList.add('btn-outline-success');
+        $('#plan3').html('');
         document.getElementById('4Input').innerHTML = calc;
         document.getElementById('4Sum').innerHTML = Number((sumCount4-1000).toFixed(2)) + '€';
                 countArray = [...countArray, sumCount4];
@@ -286,14 +329,31 @@ let htmlData2 ="<td colspan=\"3\">Einmalige Setup-Kosten</td>\n" +
          let filtered_array = countArray.filter(x=> x !==sumCount4
         );
         countArray = filtered_array;
-        label.classList.remove('btn-success');
+        if (label.classList.contains('btn-outline-success')){
+            label.classList.add('btn-success');
+        label.classList.remove('btn-outline-success');
+        let summ = document.getElementById('address').innerHTML;
+        sumCount4 = summ*0.31+1000;
+        sumCount4 = Number(sumCount4.toFixed(2));
+        $('#plan4').append(htmlData);
+        $('#subplan4').append(htmlData2);
+        document.getElementById('service-3').classList.remove('btn-success');
+        document.getElementById('service-3').classList.add('btn-outline-success');
+        $('#plan3').html('');
+        document.getElementById('4Input').innerHTML = calc;
+        document.getElementById('4Sum').innerHTML = Number((sumCount4-1000).toFixed(2)) + '€';
+                countArray = [...countArray, sumCount4];
+              totalSum()
+        } else {
+            label.classList.remove('btn-success');
         label.classList.add('btn-outline-success');
                 $('#plan4').html('');
                 $('#subplan4').html('');
-                $('#plan3').html('');
                           totalSum();
 
         sumCount4 = 0;
+        }
+
     }
     console.log(sumCount4);
     return sumCount4;
@@ -312,10 +372,14 @@ let htmlData = " <td> Der Klassiker in der Architektenansprache </td>\n" +
     if ($event.checked === true) {
         label.classList.add('btn-success');
         label.classList.remove('btn-outline-success');
+
         let summ = document.getElementById('address').innerHTML;
         sumCount5 = summ*0.20;
         sumCount5 = Number(sumCount5.toFixed(2));
         $('#plan5').append(htmlData);
+        document.getElementById('service-6').classList.remove('btn-success');
+        document.getElementById('service-6').classList.add('btn-outline-success');
+        $('#plan6').html('');
         document.getElementById('5Input').innerHTML = calc;
         document.getElementById('5Sum').innerHTML = sumCount5 + '€';
                 countArray = [...countArray, sumCount5];
@@ -325,14 +389,31 @@ let htmlData = " <td> Der Klassiker in der Architektenansprache </td>\n" +
          let filtered_array = countArray.filter(x=> x !==sumCount5
         );
         countArray = filtered_array;
-        label.classList.remove('btn-success');
-        label.classList.add('btn-outline-success');
+        if (label.classList.contains('btn-outline-success')){
+            label.classList.add('btn-success');
+            label.classList.remove('btn-outline-success');
+
+        let summ = document.getElementById('address').innerHTML;
+        sumCount5 = summ*0.20;
+        sumCount5 = Number(sumCount5.toFixed(2));
+        $('#plan5').append(htmlData);
+        document.getElementById('service-6').classList.remove('btn-success');
+        document.getElementById('service-6').classList.add('btn-outline-success');
+        $('#plan6').html('');
+        document.getElementById('5Input').innerHTML = calc;
+        document.getElementById('5Sum').innerHTML = sumCount5 + '€';
+                countArray = [...countArray, sumCount5];
+              totalSum()
+        } else {
+             label.classList.remove('btn-success');
+             label.classList.add('btn-outline-success');
                 $('#plan5').html('');
           totalSum();
 
         sumCount5 = 0;
+        }
+
     }
-    console.log(sumCount);
     return sumCount5;
 }
 
@@ -353,6 +434,9 @@ let htmlData = " <td> Der Klassiker in der Architektenansprache </td>\n" +
         sumCount6 = summ*0.26;
         sumCount6 = Number(sumCount6.toFixed(2));
         $('#plan6').append(htmlData);
+        document.getElementById('service-5').classList.remove('btn-success');
+        document.getElementById('service-5').classList.add('btn-outline-success');
+        $('#plan5').html('');
         document.getElementById('6Input').innerHTML = calc;
         document.getElementById('6Sum').innerHTML = sumCount6 + '€';
                 countArray = [...countArray, sumCount6];
@@ -362,12 +446,29 @@ let htmlData = " <td> Der Klassiker in der Architektenansprache </td>\n" +
          let filtered_array = countArray.filter(x=> x !==sumCount6
         );
         countArray = filtered_array;
-        label.classList.remove('btn-success');
-        label.classList.add('btn-outline-success');
+                if (label.classList.contains('btn-outline-success')){
+                       label.classList.add('btn-success');
+        label.classList.remove('btn-outline-success');
+        let summ = document.getElementById('address').innerHTML;
+        sumCount6 = summ*0.26;
+        sumCount6 = Number(sumCount6.toFixed(2));
+        $('#plan6').append(htmlData);
+        document.getElementById('service-5').classList.remove('btn-success');
+        document.getElementById('service-5').classList.add('btn-outline-success');
+        $('#plan5').html('');
+        document.getElementById(    '6Input').innerHTML = calc;
+        document.getElementById('6Sum').innerHTML = sumCount6 + '€';
+                countArray = [...countArray, sumCount6];
+              totalSum()
+                } else {
+               label.classList.remove('btn-success');
+               label.classList.add('btn-outline-success');
                 $('#plan6').html('');
               totalSum();
 
         sumCount6 = 0;
+                }
+
     }
     console.log(sumCount6);
     return sumCount6;
@@ -379,7 +480,7 @@ function totalSum(){
         sumArray.forEach(x => sum += x);
         countArray.forEach(x => calc += x);
         total = (sum*0.49)+parseInt(calc);
-        document.getElementById('totalSum').innerHTML = total;
+        document.getElementById('totalSum').innerHTML = total + '€';
     console.log(countArray);
     console.log(calc);
     console.log(total);
@@ -403,13 +504,4 @@ $('#video1').on('hidden.bs.modal', function (e) {
     document.getElementById('player').innerHTML = '';
 });
 
-
-var slider = document.getElementById("range-inp");
-var output = document.getElementById("range-val");
-output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-    output.innerHTML = this.value;
-}
 

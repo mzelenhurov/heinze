@@ -338,7 +338,7 @@
                             <input type="radio" name="rev-sel" id="nationwide" class="radio-btn" checked>
                             <label for="nationwide" class="text-black cursor-pointer fs-16 fw-600 ml-2 mb-0">BUNDESWEIT</label>
                         </span>
-                        <span class="text-green fs-14 fw-500">0</span>
+                        <span class="text-green fs-14 fw-500"></span>
                     </div>
                     <div class="d-flex flex-lg-nowrap flex-wrap">
                         <div class="w-100 mr-lg-43 mb-lg-0 mb-5">
@@ -351,7 +351,7 @@
                         </div>
                         <div class="w-100">
                             <div class="d-flex align-items-center">
-                                <p class="text-black fs-16 fw-600 mb-0">UMKREISSELEKTION</p>
+                                <p class="text-black fs-16 fw-600 mb-0">EIGENE ADRESSEN</p>
                                 <span style="font-family: 'Roboto', sans-serif; font-size: 12px; margin-left: 6px">&#9432;</span>
                             </div>
                             <p class="text-light-black fs-16 fw-400 mt-3 mb-1">Adressanzahl eingeben</p>
@@ -367,8 +367,8 @@
                         <input type="range" name="" id="range-inp" class=" form-control-range">
                     </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <button class="btn btn-success fs-14 fw-600"><a href="#services" style="color: white;">Weiter</a>
-                        </button>
+                       <a href="#services" style="color: white;"> <button class="btn btn-success fs-14 fw-600">Weiter</button></a>
+
                     </div>
                 </div>
 
@@ -571,7 +571,7 @@
                         <p class="fs-14 text-gray mb-4">zzgl. Mwst. und Porto</p>
 
                         <label class="btn btn-outline-success check-btn fw-700"
-                               for="service-cb-3">
+                               for="service-cb-3" id="service-3">
                             <input type="checkbox" id="service-cb-3" class="adr3" onclick="adressSum3(this)">
                             Service wählen
                         </label>
@@ -597,8 +597,8 @@
 
                         <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                         <label class="btn btn-outline-success check-btn fw-700"
-                               for="service-cb-3-1">
-                            <input type="checkbox" id="service-cb-3-1" class="adr3" onclick="adressSum3(this)">
+                               for="service-cb-3-1" id="service-4">
+                            <input type="checkbox" id="service-cb-3-1" class="adr4" onclick="adressSum4(this)">
                             Service wählen
                         </label>
 
@@ -627,7 +627,7 @@
                             <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                             <label class="btn btn-outline-success check-btn fw-700"
                                    for="service-cb-3-2">
-                                <input type="checkbox" id="service-cb-3-2" class="adr4" onclick="adressSum4(this)">
+                                <input type="checkbox" id="service-cb-3-2" class="adr3" onclick="adressSum3(this)">
                                 Service wählen
                             </label>
 
@@ -687,7 +687,7 @@
 
                         <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                         <label class="btn btn-outline-success check-btn fw-700"
-                               for="service-cb-4">
+                               for="service-cb-4" id="service-5">
                             <input type="checkbox" id="service-cb-4" onclick="adressSum5(this)">
                             Service wählen
                         </label>
@@ -708,7 +708,7 @@
                         <!--<button class="btn btn-outline-success">Service wählen</button>-->
 
                         <label class="btn btn-outline-success check-btn fw-700"
-                               for="service-cb-4-1">
+                               for="service-cb-4-1" id="service-6">
                             <input type="checkbox" id="service-cb-4-1" onclick="adressSum6(this)">
                             Service wählen
                         </label>
@@ -738,7 +738,7 @@
                             <!--<button class="btn btn btn-outline-success">Service wählen</button>-->
                             <label class="btn btn-outline-success check-btn fw-700"
                                    for="service-cb-4-2">
-                                <input type="checkbox" id="service-cb-4-2" onclick="cheackboxServiceControl(this)">
+                                <input type="checkbox" id="service-cb-4-2" onclick="adressSum5(this)">
                                 Service wählen
                             </label>
 
@@ -757,7 +757,7 @@
                             <!--<button class="btn btn-outline-success">Service wählen</button>-->
                             <label class="btn btn-outline-success check-btn fw-700"
                                    for="service-cb-4-3">
-                                <input type="checkbox" id="service-cb-4-3" onclick="cheackboxServiceControl(this)">
+                                <input type="checkbox" id="service-cb-4-3" onclick="adressSum6(this)">
                                 Service wählen
                             </label>
                     </div>
@@ -1064,7 +1064,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <h5 class="modal-title fs-16 fw-600 text-black mb-4" id="exampleModalLongTitle"></h5>
+                <h5 class="modal-title fs-16 fw-600 text-black mb-4" id="exampleModalLongTitle">Angebot erstellen für:</h5>
 
                 <form action="{% url 'send_mail' %}" method="post">
                     {% csrf_token %}
@@ -1112,7 +1112,7 @@
                     meines Anliegens speichert und verarbeitet. Diese Einwilligung kann ich jederzeit widerrufen.
                     Näheres erläutert der <a class="text-green underline" href="">Datenschutzhinweis</a>.
                 </p>
-                <button type="submit" class="btn btn-success w-100">Save changes</button>
+                <button type="submit" class="btn btn-success w-100">Angebot anforden</button>
                 </form>
             </div>
         </div>
